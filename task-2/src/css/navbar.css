@@ -1,4 +1,35 @@
-.hello{
-    color:red;
-    font-size: 3rem;
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@400&family=Roboto+Slab&display=swap');
+.nav{
+    background-color: #377D71;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10rem;
+}
+.heading{
+    font-family: 'Gentium Book Plus', serif;
+    color: #FBC5C5;
+    font-size: 2.5rem;
+}
+.sett{
+    background-color: #FBC5C5;
+    font-family: 'Roboto Slab', serif;
+    color: #7f5ddc;
+    height: 5vh;
+    border: 2px solid transparent;
+    border-radius: 8px;
+}
+
+.sett:hover{
+    color: #7f5ddc;
+background-color: #FBA1A1;
+}
+@media (max-width:300px){
+    .heading{
+        font-size:1.3rem;
+    }
+    .sett{
+        height: 4.5vh;
+    }
 }
