@@ -12,7 +12,7 @@ export default function Navbar() {
       </div>
       <main>
         {mode ? <Display /> : <div className="demp">
-          <p> Click on Get 'Users Button' to get the data from API.</p></div>}
+          <p> Click on 'Get Users' Button to get the data from API.</p></div>}
       </main>
     </>
 
