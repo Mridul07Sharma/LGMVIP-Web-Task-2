@@ -1,63 +1,45 @@
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import Display from "./components/Display";
-import React, {useEffect, useState,CSSProperties } from "react";
-// import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import React, {Component } from "react";
+import './css/navbar.css'
 
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+        user_data : [],
+        loading : true
+      }
+    this.displayUsers = this.displayUsers.bind(this)
+  }
 
-// const override: CSSProperties = {
-//   textAlign:'center',
-// backgroundColor:'#081b24',
-// display: 'flex',
-// justifyContent:'center',
-// alignItems:'center',
-// width:'100%',
-// height:'100vh',
-// margin: '0 auto',
-// borderColor: 'red'
-// };
+  displayUsers() {
+    
+    const link = "https://reqres.in/api/users?page=1";
+    fetch(link)
+    .then(response => response.json())
+    .then((users) => {
+      this.setState({
+        user_data : users.data,
+        loading : false
+      })
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+  }
 
-
-
-
-
-function App() {
-  const [users,setUsers]=useState([]);
-  // const [loading, setLoading] = useState(true);
-  const loadUsers=async ()=>{
-    const response=await fetch("https://reqres.in/api/users?page=1");
-    const jsonResponse=await response.json();
-    setUsers(jsonResponse.data);
-    }
-
-
-// useEffect(()=>{
-// const setUsers2=async ()=>{
-// const res=loadUsers();
-// setUsers(res.data);
-// setLoading(false) ;
-// }
-// loadUsers()
-//     }, [])
-
-
-
-
+  render() {
   return (
    <>
-   <Navbar loadUsers={loadUsers} />
-
-   {/* {
-        loading ?
-        <ClimbingBoxLoader
-        color={'#eceef1'} loading={loading} css={override} size={150} />
-        : */}
-        <Display users={users}/>
-        
-    {/* }   */}
-
-   
+    <div className="nav">
+    <div className="heading">LGMVIP </div>
+    <button type='button' className='sett' id="fet" onClick={this.displayUsers}>Get Users</button>
+    </div>
+    
+    <Display loading={this.state.loading} users={this.state.user_data}/>
    </>
   );
 }
-
+}
 export default App;

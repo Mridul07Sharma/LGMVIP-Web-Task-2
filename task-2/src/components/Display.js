@@ -1,8 +1,15 @@
 import React from 'react'
 import '../css/display.css'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { Bars } from  'react-loader-spinner'
 export default function Display(props) {
   return (
     <>
+      {
+        (props.loading) ?
+        <div className="loader">  
+        <Bars color="#377D71" height={80} width={80} /> </div>
+        :
  <div className="displayyy">      
 {props.users.map(({id,first_name,last_name,email,avatar})=>(
 <div className="card setr" style={{width:' 18rem'}} key={id}>
@@ -16,6 +23,6 @@ export default function Display(props) {
 
 ))}
 </div>  
-    </>
+}</>
   )
 }
